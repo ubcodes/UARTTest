@@ -3,7 +3,18 @@
  </head>
  <body>
   <script src="https://www.espruino.com/js/uart.js"></script>
+  <h1>Switching on and Switching off LED</h1>
   <button onclick="UART.write('LED1.set();\n');">LED On!</button>
   <button onclick="UART.write('LED1.reset();\n');">LED Off!</button>
+  <h1>Fetching Temperature</h1>
+  <script>
+   function getTemperature() {
+    UART.eval('E.getTemperature()', function(t) {
+     document.getElementById("result").innerHTML = t;
+    });
+   }
+  </script> 
+  <button onClick="getTemperature()">Get Temperature</button>
+  <span id="result"></span>
  </body>
 </html>
